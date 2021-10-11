@@ -8,7 +8,6 @@ public class School {
 
     static ArrayList<Student> students = new ArrayList<>();
 
-
     public static void main(String[] args) {schoolArray();}
     public static void schoolArray() {
 
@@ -18,9 +17,9 @@ public class School {
             if (menuInput == 1) {
                 showOptionOne();
             }
-            if (menuInput == 2){
-                showOptionTwo();
-            }
+//            if (menuInput == 2){
+//                showOptionTwo();
+//            }
 
         }while(true);
     }
@@ -39,79 +38,103 @@ public class School {
         return menuInput;
     }
     private static void showOptionOne() {
-        Scanner inputStudent = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.println("\nStudent's name " + (students.size() + 1) + ": ");
-        String studentName = inputStudent.nextLine();
+        String name1 = input.nextLine();
 
         System.out.println("Grade to which the student enters " + (students.size() + 1) + ": ");
-        ArrayList<String> grade = new ArrayList<>();
-        grade.add("Sixth");
-        grade.add("Seventh");
-        grade.add("Eighth");
-        grade.add("Ninth");
-        grade.add("Tenth");
-        grade.add("Eleven");
-        System.out.println(grade);
-        String studentGrade = inputStudent.nextLine();
+        int grade1 = input.nextInt();
 
-        System.out.println("Subjects to be registered, minimum one to maximum three " + (students.size() + 1) + ": ");
+        System.out.println("Select subjects, minimum 1 maximum 3 " );
 
-        ArrayList<String> subjects = new ArrayList<>();
-        subjects.add("Mathematics\n");
-        subjects.add("Spanish\n");
-        subjects.add("Science\n");
-        System.out.println(subjects);
-        String studentSubjects = inputStudent.nextLine();
-
-        students.add(new Student(studentName, studentGrade, studentSubjects));
-
-        System.out.println("\nStudent registration is: \n");
-        for (Student student : students) {
-            student.printStudent(students.indexOf(student));
+        for (EnumSubject subjectString : EnumSubject.values()){
+             System.out.println(subjectString);
         }
-    }
-    private static void showOptionTwo() {
-        int menuConsult;
-        do {
-            Scanner input = new Scanner(System.in);
-            System.out.println("\nSelect an option");
-            System.out.println("1 - Query by grade");
-            System.out.println("2 - Query by subject");
-            menuConsult = input.nextInt();
-        }while (menuConsult < 1 || menuConsult > 2);
-        for (int i=0; i < students.size(); i++){
-            if (menuConsult == 1){
-                if(students.get(i).isGrade()){
-                    students.get(i).printGrade(i);
-                }
-                if (students.get(i).isGrade7()){
-                  students.get(i).printGrade(i);
-                }
-                if (students.get(i).isGrade8()){
-                    students.get(i).printGrade(i);
-                }
-                if (students.get(i).isGrade9()){
-                    students.get(i).printGrade(i);
-                }
-                if (students.get(i).isGrade10()){
-                    students.get(i).printGrade(i);
-                }
-                if (students.get(i).isGrade11()){
-                    students.get(i).printGrade(i);
-                }
-            }if (menuConsult == 2){
-                if (students.get(i).isSubject()){
-                    students.get(i).printSubject(i);
-                }
-                if (students.get(i).isSubject1()){
-                    students.get(i).printSubject(i);
-                }
-                if (students.get(i).isSubject2()){
-                    students.get(i).printSubject(i);
-                }
+
+        System.out.println("Digite el numero que desea");
+        int lectura = input.nextInt();
+
+        ArrayList<EnumSubject> subjectSelect = new ArrayList<>();
+        subjectSelect.add(EnumSubject.values()[lectura - 1]);
+
+        students.add(new Student(name1, grade1, subjectSelect));
+
+        System.out.println("\nThe registered student is: \n");
+            for (Student student : students) {
+                student.printStudent(students.indexOf(student));
             }
-        }
+
     }
 
 
 }
+
+//        ArrayList<String> subjects = new ArrayList<>();
+//        subjects.add("1 - Mathematics");
+//        subjects.add("2 - Spanish");
+//        subjects.add("3 - Science");
+
+//    private static void showOptionTwo() {
+//        int menuConsult;
+//        do {
+//            Scanner input = new Scanner(System.in);
+//            System.out.println("\nSelect an option");
+//            System.out.println("1 - Query by grade");
+//            System.out.println("2 - Query by subject");
+//            menuConsult = input.nextInt();
+//        }while (menuConsult < 1 || menuConsult > 2);
+//        for (int i=0; i < students.size(); i++){
+//            if (menuConsult == 1){
+//                if(students.get(i).isGrade()){
+//                    students.get(i).printStudent(i);
+//                }
+//
+//            }if (menuConsult == 2){
+//                if (students.get(i).isSubject()){
+//                    students.get(i).printStudent(i);
+//                }
+//
+//            }
+//        }
+//    }
+
+
+
+
+
+
+
+//        ArrayList<String> grade = new ArrayList<>();
+//        grade.add("Sixth");
+//        grade.add("Seventh");
+//        grade.add("Eighth");
+//        grade.add("Ninth");
+//        grade.add("Tenth");
+//        grade.add("Eleven");
+//        System.out.println(grade);
+
+//        ArrayList<String> subjects = new ArrayList<>();
+//        subjects.add("Mathematic");
+//        subjects.add("Spanish");
+//        subjects.add("Science");
+//        System.out.println(subjects(i));
+
+
+//    Scanner inputStudent = new Scanner(System.in);
+//
+//        System.out.println("\nStudent's name " + (students.size() + 1) + ": ");
+//                String name = inputStudent.nextLine();
+//
+//                System.out.println("Grade to which the student enters " + (students.size() + 1) + ": ");
+//                String grade = inputStudent.nextLine();
+//
+//                System.out.println("Subjects to be registered, minimum one to maximum three " + (students.size() + 1) + ": ");
+//
+//                String subject = inputStudent.nextLine();
+//
+//                students.add(new Student(name, grade, subject));
+//
+//                System.out.println("\nStudent registration is: \n");
+//                for (Student student : students) {
+//                student.printStudent(students.indexOf(student));
+//                }
