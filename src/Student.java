@@ -4,9 +4,9 @@ import java.util.List;
 public class Student {
     String name;
     int grade;
-    ArrayList<String> subjects;
+    ArrayList<EnumSubject> subjects;
 
-    public Student(String name, int grade, ArrayList<String> subjects) {
+    public Student(String name, int grade, ArrayList<EnumSubject> subjects) {
         this.name = name;
         this.grade = grade;
         this.subjects = subjects;
@@ -19,7 +19,7 @@ public class Student {
         System.out.println(i+1+". Student's name "+this.name +" "+"grade you are entering is " +
             " " + " " +this.grade +" "+"your registered subjects are ");
 
-        for (String subjectString : subjects){
+        for (EnumSubject subjectString : subjects){
             System.out.println(subjectString);
         }
 
