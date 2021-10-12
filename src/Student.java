@@ -17,7 +17,7 @@ public class Student {
     public void printStudent(int i)
     {
         System.out.println(i+1+". Student's name "+this.name +" "+"grade you are entering is " +
-            " " + " " +this.grade +" "+"your registered subjects are ");
+                "" +this.grade +" "+"your registered subjects are");
 
         for (EnumSubject subjectString : subjects){
             System.out.println(subjectString);
