@@ -29,40 +29,55 @@ public class School {
             int menuInput;
                 do {
                     Scanner input = new Scanner(System.in);
-                    System.out.println("\nRegistration of students, subjects and course");
+                    System.out.println("\nRegistration of students, subjects and course.");
                     System.out.println("Select an option to perform");
-                    System.out.println("\n1 -> Student registration");
-                    System.out.println("2 -> Consult students");
-                    System.out.println("3 -> All students");
+                    System.out.println("\n1 - Student registration");
+                    System.out.println("2 - Consult students");
+                    System.out.println("3 - All students");
                     menuInput = input.nextInt();
                 } while (menuInput < 1 || menuInput > 3);
                 return menuInput;
         }
         private static void showOptionOne() {
-                    Scanner input = new Scanner(System.in);
-                    System.out.println("\nStudent's name " + (students.size() + 1) + ": ");
-                    String name1 = input.nextLine();
+            Scanner input = new Scanner(System.in);
+            System.out.println("\nStudent's name " + (students.size() + 1) + ": ");
+            String name1 = input.nextLine();
 
-                    System.out.println("Grade to which the student enters " + (students.size() + 1) + ": ");
-                    int grade1 = input.nextInt();
 
-                    System.out.println("Select subjects, minimum 1 maximum 3.");
-                    for (int i = 0; i < EnumSubject.values().length; i++){
-                        System.out.println(i + 1 + "." + " " +EnumSubject.values()[i]);
-                    }
+            System.out.println("\nGrade of 6to to 11nce " + (students.size() + 1) + ": ");
+            for (int i = 0; i < EnumGrade.values().length; i++){
+                System.out.println(i + 1 + "." + " " +EnumGrade.values()[i]);
+            }
 
-                    System.out.println("Type the number you want to select");
-                    int reading = input.nextInt();
+            System.out.println("\nSelect the grade to enter");
+            int grade1 = input.nextInt();
 
-                    ArrayList<EnumSubject> subjectSelect = new ArrayList<>();
-                    subjectSelect.add(EnumSubject.values()[reading - 1]);
+            ArrayList<EnumGrade> gradeSelect = new ArrayList<>();
+            gradeSelect.add(EnumGrade.values()[grade1 - 1]);
 
-                    students.add(new Student(name1, grade1, subjectSelect));
+            System.out.println("\nSelect subjects, minimum 1 maximum 3.");
+            for (int i = 0; i < EnumSubject.values().length; i++){
+                System.out.println(i + 1 + "." + " " +EnumSubject.values()[i]);
+            }
 
-                    System.out.println("\nThe registered student is: \n");
-                        for (Student student : students) {
-                        student.printStudent(students.indexOf(student));
-                    }
+            System.out.println("\nType the number you want to select");
+            int reading = input.nextInt();
+
+            ArrayList<EnumSubject> subjectSelect = new ArrayList<>();
+            subjectSelect.add(EnumSubject.values()[reading - 1]);
+
+            students.add(new Student(name1, gradeSelect, subjectSelect));
+
+            System.out.println("\nThe registered student is: \n");
+                for (Student student : students) {
+                     student.printStudent(students.indexOf(student));
+                }
+
+//            System.out.println("\nDesea seleccionar otra materia");
+
+//            for (int i = 0; i < EnumSubject.values().length; i++){
+//                System.out.println(i + 1 + "." + " " +EnumSubject.values()[i]);
+//            }
 
         }
 

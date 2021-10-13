@@ -4,3 +4,7 @@ enum EnumSubject
 
 }
 
+enum EnumGrade
+{
+    SEXTO, SEPTIMO, OCTAVO, NOVENO, DECIMO, ONCE
+}
