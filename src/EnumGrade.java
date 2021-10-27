@@ -1,0 +1,4 @@
+enum EnumGrade
+{
+    SIXTH, SEVENTH, EIGHTH, NINTH, TENTH, ONCE
+}
