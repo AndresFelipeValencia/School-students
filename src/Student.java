@@ -28,12 +28,25 @@ public class Student {
         System.out.println(" ");
     }
 
-    public void setSubjects(ArrayList<EnumSubject> subjects){
-        this.subjects = subjects;
+    public boolean isMathematics(){
+        if(subjects.contains(EnumSubject.MATHEMATICS)) {
+            return true;
+        }
+        return subjects.contains(EnumSubject.MATHEMATICS);
     }
 
-    public List<EnumSubject> getSubjects(){
-        return subjects;
+    public boolean isSpanish(){
+        if(subjects.contains(EnumSubject.SPANISH)) {
+            return true;
+        }
+        return subjects.contains(EnumSubject.SPANISH);
+    }
+
+    public boolean isScience(){
+        if(subjects.contains(EnumSubject.SCIENCE)) {
+            return true;
+        }
+        return subjects.contains(EnumSubject.SCIENCE);
     }
 
 

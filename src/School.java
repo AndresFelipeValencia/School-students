@@ -10,13 +10,16 @@ public class School {
         //noinspection InfiniteLoopStatement
             do{
                 int menuInput = showMainMenu();
-                    if (menuInput == 1) {
-                        showOptionOne();
-                    }
+                if (menuInput == 1) {
+                    showOptionOne();
+                }
+                if (menuInput == 2){
+                    showOptionTwo();
+                }
+                if (menuInput == 3){
+                    showOptionThree();
+                }
 
-//                if (menuInput == 2){
-////                  showOptionTwo();
-//                }
             }while(true);
         }
 
@@ -27,17 +30,17 @@ public class School {
                     System.out.println("\nRegistration of students, subjects and course.");
                     System.out.println("Select an option to perform");
                     System.out.println("\n1 - Student registration");
-                    System.out.println("2 - Consult students");
+                    System.out.println("2 - Consult students by subject");
                     System.out.println("3 - All students");
                     menuInput = input.nextInt();
                 } while (menuInput < 1 || menuInput > 3);
                 return menuInput;
-    }
+        }
         private static void showOptionOne() {
             Scanner input = new Scanner(System.in);
+
             System.out.println("\nStudent's name " + (students.size() + 1) + ": ");
             String name = input.nextLine();
-
 
             System.out.println("\nGrade of 6to to 11nce : "  );
             for (int i = 0; i < EnumGrade.values().length; i++){
@@ -95,6 +98,46 @@ public class School {
                     student.printStudent(students.indexOf(student));
                 }
         }
+    private static void showOptionTwo() {
+        int numConsult;
+        do {
+            Scanner input = new Scanner(System.in);
+            System.out.println("\nSelect an option");
+            System.out.println("1 - Mathematics");
+            System.out.println("2 - Spanish");
+            System.out.println("3 - Science");
+            numConsult = input.nextInt();
+        }while (numConsult <1 || numConsult >3);
+
+        for (int i = 0; i < students.size(); i++){
+            if (numConsult == 1){
+                if (students.get(i).isMathematics()){
+                    students.get(i).printStudent(i);
+                }
+            }
+        }
+        for (int i = 0; i < students.size(); i++){
+            if (numConsult == 2){
+                if (students.get(i).isSpanish()){
+                    students.get(i).printStudent(i);
+                }
+            }
+        }
+        for (int i = 0; i < students.size(); i++){
+            if (numConsult == 3){
+                if (students.get(i).isScience()){
+                    students.get(i).printStudent(i);
+                }
+            }
+        }
+    }
+    private static void showOptionThree() {
+        System.out.println("\nAll students are: \n");
+        for (Student student : students) {
+            student.printStudent(students.indexOf(student));
+        }
+    }
+
 }
 
 
