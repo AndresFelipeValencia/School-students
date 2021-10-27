@@ -15,35 +15,26 @@ public class Student {
 
     }
 
-
     public void printStudent(int i) {
-        System.out.println(i + 1 + ". Student's name " + this.name + " " + "grade you are entering is " +
-                "" +  " " + "your registered subjects are ");
+        System.out.println(i + 1 + ". Student's name: " + this.name );
 
         for (EnumGrade gradeString : grade){
-            System.out.println(gradeString);
+            System.out.println(" -> Grade you are entering is: " + gradeString);
         }
 
         for (EnumSubject subjectString : subjects) {
-            System.out.println(subjectString);
+            System.out.println(" -> Your registered subjects are " + subjectString);
         }
-
-
+        System.out.println(" ");
     }
 
+    public void setSubjects(ArrayList<EnumSubject> subjects){
+        this.subjects = subjects;
+    }
 
-//    public boolean isGrade() {
-//        if (grade.contains(6)) {
-//            return true;
-//        }
-//        return grade.contains(7);
-//    }
-//
-//    public boolean isSubject() {
-//        if (subject.contains("mathematics")) {
-//            return true;
-//        }
-//        return subject.contains("Mathematics");
-//    }
+    public List<EnumSubject> getSubjects(){
+        return subjects;
+    }
+
 
 }

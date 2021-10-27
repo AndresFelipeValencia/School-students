@@ -1,31 +1,26 @@
-import com.sun.org.apache.xerces.internal.xs.StringList;
-
-import javax.security.auth.Subject;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class School {
 
     static ArrayList<Student> students = new ArrayList<>();
+    public static void main(String[] args) {schoolArray();}
 
-        public static void main(String[] args) {schoolArray();}
         public static void schoolArray() {
-
         //noinspection InfiniteLoopStatement
             do{
                 int menuInput = showMainMenu();
                     if (menuInput == 1) {
                         showOptionOne();
                     }
+
 //                if (menuInput == 2){
 ////                  showOptionTwo();
 //                }
-
             }while(true);
         }
 
-        private static int showMainMenu() {
+    private static int showMainMenu() {
             int menuInput;
                 do {
                     Scanner input = new Scanner(System.in);
@@ -37,80 +32,71 @@ public class School {
                     menuInput = input.nextInt();
                 } while (menuInput < 1 || menuInput > 3);
                 return menuInput;
-        }
+    }
         private static void showOptionOne() {
             Scanner input = new Scanner(System.in);
             System.out.println("\nStudent's name " + (students.size() + 1) + ": ");
-            String name1 = input.nextLine();
+            String name = input.nextLine();
 
 
-            System.out.println("\nGrade of 6to to 11nce " + (students.size() + 1) + ": ");
+            System.out.println("\nGrade of 6to to 11nce : "  );
             for (int i = 0; i < EnumGrade.values().length; i++){
                 System.out.println(i + 1 + "." + " " +EnumGrade.values()[i]);
             }
 
             System.out.println("\nSelect the grade to enter");
-            int grade1 = input.nextInt();
+            int grade = input.nextInt();
 
             ArrayList<EnumGrade> gradeSelect = new ArrayList<>();
-            gradeSelect.add(EnumGrade.values()[grade1 - 1]);
+            gradeSelect.add(EnumGrade.values()[grade - 1]);
 
             System.out.println("\nSelect subjects, minimum 1 maximum 3.");
             for (int i = 0; i < EnumSubject.values().length; i++){
                 System.out.println(i + 1 + "." + " " +EnumSubject.values()[i]);
             }
 
-            System.out.println("\nType the number you want to select");
+            System.out.println("\nType the number of the subject you want to register");
             int reading = input.nextInt();
 
             ArrayList<EnumSubject> subjectSelect = new ArrayList<>();
             subjectSelect.add(EnumSubject.values()[reading - 1]);
 
-            students.add(new Student(name1, gradeSelect, subjectSelect));
+            int resp1;
+            Scanner input1 = new Scanner(System.in);
+                do {
+                    System.out.println("\nWould you like to add another subject 1");
+                    System.out.println("1 - Yes");
+                    System.out.println("2 - No");
+                    resp1 = input1.nextInt();
+                }while (resp1<1||resp1>2);
 
-            System.out.println("\nThe registered student is: \n");
-                for (Student student : students) {
-                     student.printStudent(students.indexOf(student));
+                if (resp1 == 1) {
+                    do {
+                        System.out.println("\nThe subjects available are: 1");
+                        for (int i = 0; i < EnumSubject.values().length; i++) {
+                            System.out.println(i + 1 + "." + " " + EnumSubject.values()[i]);
+                        }
+                        System.out.println("\nSelect asignature 1");
+                        int option = input.nextInt();
+                        subjectSelect.add(EnumSubject.values()[option - 1]);
+
+                        do {
+                            System.out.println("\nWould you like to add another subject 2");
+                            System.out.println("1 - Yes");
+                            System.out.println("2 - No");
+                            resp1 = input1.nextInt();
+                        }while (resp1<1||resp1>2);
+                    }while (resp1 == 1);
                 }
 
-//            System.out.println("\nDesea seleccionar otra materia");
-
-//            for (int i = 0; i < EnumSubject.values().length; i++){
-//                System.out.println(i + 1 + "." + " " +EnumSubject.values()[i]);
-//            }
-
+                students.add(new Student(name, gradeSelect, new ArrayList<>(subjectSelect)));
+                System.out.println("\nThe registered student is: \n");
+                for (Student student : students) {
+                    student.printStudent(students.indexOf(student));
+                }
         }
-
-
 }
 
 
-//    private static void showOptionTwo() {
-//        int menuConsult;
-//        do {
-//            Scanner input = new Scanner(System.in);
-//            System.out.println("\nSelect an option");
-//            System.out.println("1 - Query by grade");
-//            System.out.println("2 - Query by subject");
-//            menuConsult = input.nextInt();
-//        }while (menuConsult < 1 || menuConsult > 2);
-//        for (int i=0; i < students.size(); i++){
-//            if (menuConsult == 1){
-//                if(students.get(i).isGrade()){
-//                    students.get(i).printStudent(i);
-//                }
-//
-//            }if (menuConsult == 2){
-//                if (students.get(i).isSubject()){
-//                    students.get(i).printStudent(i);
-//                }
-//
-//            }
-//        }
-//    }
 
-
-//                for (EnumSubject subjectString : EnumSubject.values()){
-//                System.out.println(subjectString);
-//                } // For para buscar elementos en el enum y imprimir
 
