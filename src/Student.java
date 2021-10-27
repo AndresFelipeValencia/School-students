@@ -23,7 +23,7 @@ public class Student {
         }
 
         for (EnumSubject subjectString : subjects) {
-            System.out.println(" -> Your registered subjects are " + subjectString);
+            System.out.println(" -> Your registered subjects are: " + subjectString);
         }
         System.out.println(" ");
     }

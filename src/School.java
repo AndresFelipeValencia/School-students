@@ -64,7 +64,7 @@ public class School {
             int resp1;
             Scanner input1 = new Scanner(System.in);
                 do {
-                    System.out.println("\nWould you like to add another subject 1");
+                    System.out.println("\nWould you like to add another subject");
                     System.out.println("1 - Yes");
                     System.out.println("2 - No");
                     resp1 = input1.nextInt();
@@ -72,7 +72,7 @@ public class School {
 
                 if (resp1 == 1) {
                     do {
-                        System.out.println("\nThe subjects available are: 1");
+                        System.out.println("\nThe subjects available are: ");
                         for (int i = 0; i < EnumSubject.values().length; i++) {
                             System.out.println(i + 1 + "." + " " + EnumSubject.values()[i]);
                         }
@@ -81,7 +81,7 @@ public class School {
                         subjectSelect.add(EnumSubject.values()[option - 1]);
 
                         do {
-                            System.out.println("\nWould you like to add another subject 2");
+                            System.out.println("\nWould you like to add another subject ");
                             System.out.println("1 - Yes");
                             System.out.println("2 - No");
                             resp1 = input1.nextInt();
